@@ -18,6 +18,19 @@ def run
     system("clear")
     sleep(2) #pauses the program for 2 seconds
 
+    sleep(1)
+    confirm_info
+end
+
+
+def is_right
+    puts "Is this correct?"
+    puts "Enter 1 for YES, 2 for NO"
+    answer = gets.chomp
+    confirmation(answer)
+end
+
+def confirm_info
     puts "\n"
     puts "Here is your profile:"
     puts "\n"
@@ -25,38 +38,22 @@ def run
     puts "Your age is: #{$age}"
     puts "Your ssn is: xxx-xx-#{$ssn.slice(-4, 4)}"
     puts "\n"
-
-    sleep(1)
-    puts "Is this correct?"
-    puts "Enter 1 for YES, 2 for NO"
-    answer = gets.chomp
-
-    def confirm_info
-        puts "\n"
-        puts "Here is your profile:"
-        puts "\n"
-        puts "Your name is: #{$name}"
-        puts "Your age is: #{$age}"
-        puts "Your ssn is: xxx-xx-#{$ssn.slice(-4, 4)}"
-        puts "\n"
-    end
-
-    
-    def confirmation(answer)
-        if answer == '1'
-            
-        elsif answer == '2'
-            puts "What would you like to change?"
-            change_answer
-
-        else
-            puts "Sorry, that entry is invalid."
-            confirmation(new_answer)
-        end
-    end
-    confirmation(answer)
+    is_right
 end
 
+
+def confirmation(answer)
+    if answer == '1'
+       return 
+    elsif answer == '2'
+        puts "What would you like to change?"
+        change_answer
+
+    else
+        puts "Sorry, that entry is invalid."
+        is_right
+    end
+end
 
 def change_answer
     puts "For name, enter 1"
@@ -75,6 +72,6 @@ def change_answer
     confirm_info
 end
 
-binding.pry
+#binding.pry
 run
 
